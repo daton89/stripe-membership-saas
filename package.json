@@ -1,0 +1,69 @@
+{
+  "name": "stripe-membership-saas",
+  "description": "ExpressJS boilerplate for Stripe membership and subscription application with Mailgun Mongodb and React. Inspired by hackaton-starter.",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:daton89/stripe-membership-saas.git"
+  },
+  "keywords": [
+    "stripe",
+    "subscription",
+    "membership",
+    "saas",
+    "plan"
+  ],
+  "author": {
+    "name": "Tony D'Angelo",
+    "email": "tonydangelo123@gmail.com",
+    "url": "https://www.daton.it"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daton89/stripe-membership-saas"
+  },
+  "scripts": {
+    "start": "nodemon server",
+    "test": "ava"
+  },
+  "dependencies": {
+    "async": "^2.6.0",
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.2",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "debug": "^3.1.0",
+    "express": "^4.16.3",
+    "express-flash": "*",
+    "express-session": "*",
+    "express-subdomain": "^1.0.1",
+    "express-validator": "^5.1.2",
+    "lodash": "^4.17.5",
+    "method-override": "^2.3.10",
+    "middleware-responder": "^1.0.0",
+    "moment": "^2.22.0",
+    "mongoose": "^5.0.14",
+    "mongoose-timestamp": "^0.6.0",
+    "morgan": "^1.9.0",
+    "nodemailer": "^4.6.4",
+    "nodemailer-mailgunapi-transport": "^0.0.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.5.0",
+    "stripe": "^5.8.0",
+    "stripe-webhook-middleware": "^0.2.0",
+    "swig": "^1.4.2",
+    "verror": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "nodemon": "^1.17.3"
+  }
+}
