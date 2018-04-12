@@ -13,6 +13,7 @@ Check out the [demo](#)!
 - MongoDB
 - NodeJS
 - Docker (for production and tests with Jenkins)
+- Yarn (optional)
 
 ### Getting Started
 
