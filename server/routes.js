@@ -4,16 +4,16 @@
 import { isAuthenticated, isUnauthenticated } from './middleware/auth';
 import { setRedirect, setRender } from 'middleware-responder';
 
-var StripeWebhook = require('stripe-webhook-middleware'),
-  stripeEvents = require('./middleware/stripe-events'),
-  secrets = require('./config/secrets');
+const StripeWebhook = require('stripe-webhook-middleware');
+const stripeEvents = require('./middleware/stripe-events');
+const secrets = require('./config/secrets');
 // controllers
-var users = require('./controllers/users-controller'),
-  main = require('./controllers/main-controller'),
-  dashboard = require('./controllers/dashboard-controller'),
-  passwords = require('./controllers/passwords-controller'),
-  registrations = require('./controllers/registrations-controller'),
-  sessions = require('./controllers/sessions-controller');
+var users = require('./controllers/users-controller');
+const main = require('./controllers/main-controller');
+const dashboard = require('./controllers/dashboard-controller');
+const passwords = require('./controllers/passwords-controller');
+const registrations = require('./controllers/registrations-controller');
+const sessions = require('./controllers/sessions-controller');
 
 var stripeWebhook = new StripeWebhook({
   stripeApiKey: secrets.stripeOptions.apiKey,
