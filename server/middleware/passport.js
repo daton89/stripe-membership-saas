@@ -2,6 +2,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 var rp = require('request-promise');
 const secrets = require('../config/secrets');
+const moment = require('moment')
 
 module.exports = function (passport) {
 
@@ -39,7 +40,8 @@ module.exports = function (passport) {
 
         if (signin.status === 200) {
           const token = signin.message.token;
-          const expires_in = signin.message.expires_in;
+          // const expires_in = signup.message.expires_in;
+          const expires_in = moment().add(10, 'minutes');
           const user = await User.findOneAndUpdate({ email }, { token, expires_in }, { new: true });
           return done(null, user, req.flash('success', 'Successfully logged in.'));
         }
@@ -78,14 +80,15 @@ module.exports = function (passport) {
 
         } catch (err) {
 
-          if (err.status === 404) {
-
+          if (err.statusCode === 404) {
             let signup;
             try {
               signup = await rp({
                 method: 'POST',
                 uri: secrets.auth.host + 'access/signup',
                 body: {
+                  name: email, // remove
+                  phone: email, // remove
                   email,
                   password
                 },
@@ -94,11 +97,12 @@ module.exports = function (passport) {
             } catch (err) {
               return done(err, false, req.flash('error', 'Error singup user.'));
             }
-
+            console.log('signup =>', signup);
             try {
               // edit this portion to accept other properties when creating a user.
               const token = signup.message.token;
-              const expires_in = signup.message.expires_in;
+              // const expires_in = signup.message.expires_in;
+              const expires_in = moment().add(10, 'minutes');
               const user = await User.create({
                 email: req.body.email,
                 token,
