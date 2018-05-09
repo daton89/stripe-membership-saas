@@ -4,6 +4,10 @@ module.exports = {
     host: process.env.AUTH_HOST || ''
   },
 
+  main: {
+    host: process.env.MAIN_HOST || ''
+  },
+
   db: process.env.MONGODB || process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || '',
 
   sessionStoreHost: process.env.SESSION_STORE_HOST || '',
