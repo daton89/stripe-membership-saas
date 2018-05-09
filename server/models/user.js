@@ -1,22 +1,24 @@
-var mongoose = require('mongoose');
-var bcrypt = require('bcrypt-nodejs');
-var crypto = require('crypto');
-var stripeCustomer = require('./plugins/stripe-customer');
-var secrets = require('../config/secrets');
-var timestamps = require('mongoose-timestamp');
+var mongoose = require("mongoose");
+var bcrypt = require("bcrypt-nodejs");
+var crypto = require("crypto");
+var stripeCustomer = require("./plugins/stripe-customer");
+var secrets = require("../config/secrets");
+var timestamps = require("mongoose-timestamp");
 
 var userSchema = new mongoose.Schema({
-  email: { type: String, unique: true, lowercase: true },
-  token: String,
-  expires_in: Date,
+  email: { type: String, required: true, unique: true, lowercase: true },
+  // token: String,
+  // expires_in: Date,
 
-  profile: {
-    name: { type: String, default: '' },
-    gender: { type: String, default: '' },
-    location: { type: String, default: '' },
-    website: { type: String, default: '' },
-    picture: { type: String, default: '' }
-  },
+  // profile: {
+  //   name: { type: String, default: "" },
+  //   gender: { type: String, default: "" },
+  //   location: { type: String, default: "" },
+  //   website: { type: String, default: "" },
+  //   picture: { type: String, default: "" }
+  // },
+
+  userId: { type: mongoose.Schema.ObjectId, unique: true }
 
   // resetPasswordToken: String,
   // resetPasswordExpires: Date
@@ -65,15 +67,18 @@ userSchema.plugin(stripeCustomer, stripeOptions);
  * Used in Navbar and Account Management page.
  */
 
-userSchema.methods.gravatar = function (size) {
-  if (!size) size = 200;
+// userSchema.methods.gravatar = function(size) {
+//   if (!size) size = 200;
 
-  if (!this.email) {
-    return 'https://gravatar.com/avatar/?s=' + size + '&d=retro';
-  }
+//   if (!this.email) {
+//     return "https://gravatar.com/avatar/?s=" + size + "&d=retro";
+//   }
 
-  var md5 = crypto.createHash('md5').update(this.email).digest('hex');
-  return 'https://gravatar.com/avatar/' + md5 + '?s=' + size + '&d=retro';
-};
+//   var md5 = crypto
+//     .createHash("md5")
+//     .update(this.email)
+//     .digest("hex");
+//   return "https://gravatar.com/avatar/" + md5 + "?s=" + size + "&d=retro";
+// };
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);
