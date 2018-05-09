@@ -58,9 +58,9 @@
   <div class="well">
     <p>Debug Info:</p>
     <ul>
-      <li>Does this user have a plan? {% if _.has(plans, user.stripe.plan) %}YES{% else %}NOPE{% endif %}</li>
-      <li>Does this user have paid plan? {% if _.some(['silver', 'gold', 'platinum'], _.method('includes', user.stripe.plan))
-        %} YES {% else %} NOPE {% endif %}</li>
+      <li>Is some plan active? {% if _.has(plans, user.stripe.plan) %}YES{% else %}NOPE{% endif %}</li>
+      <li>Is there a paid plan active? {% if _.some(['silver', 'gold', 'platinum'], _.method('includes', user.stripe.plan)) %}
+        YES {% else %} NOPE {% endif %}</li>
     </ul>
   </div>
 </div>
