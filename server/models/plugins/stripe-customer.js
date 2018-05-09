@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var Stripe = require('stripe'),
+var Stripe = require("stripe"),
   stripe;
 
 module.exports = exports = function stripeCustomer(schema, options) {
@@ -18,7 +18,7 @@ module.exports = exports = function stripeCustomer(schema, options) {
     }
   });
 
-  schema.pre('save', async function (next) {
+  schema.pre("save", async function(next) {
     var user = this;
     if (!user.isNew || user.stripe.customerId) return next();
     try {
@@ -29,11 +29,11 @@ module.exports = exports = function stripeCustomer(schema, options) {
     }
   });
 
-  schema.statics.getPlans = function () {
+  schema.statics.getPlans = function() {
     return options.planData;
   };
 
-  schema.methods.createCustomer = async function () {
+  schema.methods.createCustomer = async function() {
     const user = this;
 
     const customer = await stripe.customers.create({
@@ -45,13 +45,15 @@ module.exports = exports = function stripeCustomer(schema, options) {
     return;
   };
 
-  schema.methods.setCard = async function (stripe_token) {
+  schema.methods.setCard = async function(stripe_token) {
     const user = this;
 
     let customer;
 
     if (user.stripe.customerId) {
-      customer = await stripe.customers.update(user.stripe.customerId, { card: stripe_token });
+      customer = await stripe.customers.update(user.stripe.customerId, {
+        card: stripe_token
+      });
     } else {
       customer = await stripe.customers.create({
         email: user.email,
@@ -63,21 +65,22 @@ module.exports = exports = function stripeCustomer(schema, options) {
       user.stripe.customerId = customer.id;
     }
 
-    const card = customer.cards ? customer.cards.data[0] : customer.sources.data[0];
+    const card = customer.cards
+      ? customer.cards.data[0]
+      : customer.sources.data[0];
 
     user.stripe.last4 = card.last4;
 
     await user.save();
-
   };
 
-  schema.methods.setPlan = async function (plan, stripe_token) {
+  schema.methods.setPlan = async function(plan, stripe_token) {
     const user = this;
     const customerData = {
       plan: plan
     };
 
-    console.log('plan, stripe_token =>', plan, stripe_token);
+    console.log("plan, stripe_token =>", plan, stripe_token);
 
     const plans = await stripe.plans.list({ limit: 4 });
 
@@ -88,8 +91,9 @@ module.exports = exports = function stripeCustomer(schema, options) {
       const subscription = await stripe.subscriptions.update(
         user.stripe.subscriptionId,
         {
-          tax_percent: 10,
-          items: [{ plan: planId }],
+          billing: "send_invoice",
+          days_until_due: 1,
+          items: [{ plan: planId }]
         }
       );
       user.stripe.plan = plan;
@@ -98,7 +102,7 @@ module.exports = exports = function stripeCustomer(schema, options) {
       return;
     }
 
-    console.log('stripe_token =>', stripe_token);
+    console.log("stripe_token =>", stripe_token);
     if (stripe_token) await user.setCard(stripe_token);
 
     const subscription = await stripe.subscriptions.create({
@@ -113,17 +117,19 @@ module.exports = exports = function stripeCustomer(schema, options) {
     return;
   };
 
-  schema.methods.updateStripeEmail = async function () {
+  schema.methods.updateStripeEmail = async function() {
     const user = this;
 
-    if (!user.stripe.customerId) throw new Error('Customer not found!');
+    if (!user.stripe.customerId) throw new Error("Customer not found!");
 
-    await stripe.customers.update(user.stripe.customerId, { email: user.email });
+    await stripe.customers.update(user.stripe.customerId, {
+      email: user.email
+    });
 
     return;
   };
 
-  schema.methods.cancelStripe = async function () {
+  schema.methods.cancelStripe = async function() {
     const user = this;
 
     if (user.stripe.customerId) {
