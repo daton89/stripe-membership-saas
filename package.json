@@ -27,7 +27,9 @@
     "lint": "eslint server",
     "dev": "babel-node server --presets es2015,stage-2",
     "fix": "eslint --fix server",
-    "test": "ava"
+    "test": "ava",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "async": "^2.6.0",
@@ -66,7 +68,8 @@
     "stripe": "^5.8.0",
     "stripe-webhook-middleware": "^0.2.0",
     "swig": "^1.4.2",
-    "verror": "^1.10.0"
+    "verror": "^1.10.0",
+    "snyk": "^1.88.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -81,5 +84,6 @@
     "eslint-plugin-standard": "^3.0.1",
     "nodemon": "^1.17.3",
     "prettier-eslint": "^8.8.1"
-  }
+  },
+  "snyk": true
 }
