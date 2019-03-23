@@ -53,7 +53,7 @@
     "method-override": "^2.3.10",
     "middleware-responder": "^1.0.0",
     "moment": "^2.22.0",
-    "mongoose": "^5.0.14",
+    "mongoose": "^5.2.12",
     "mongoose-timestamp": "^0.6.0",
     "morgan": "^1.9.0",
     "nodemailer": "^4.6.4",
