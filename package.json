@@ -23,13 +23,13 @@
     "url": "https://github.com/daton89/stripe-membership-saas"
   },
   "scripts": {
-    "start": "nodemon --exec \"npm run fix && npm run lint && npm run dev\" --ignore client",
+    "start": "nodemon --exec \"yarn fix && yarn dev\" --ignore client",
     "lint": "eslint server",
-    "dev": "babel-node server --presets es2015,stage-2",
+    "dev": "babel-node server --presets env",
     "fix": "eslint --fix server",
     "test": "ava",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "yarn snyk-protect"
   },
   "dependencies": {
     "async": "^2.6.0",
@@ -65,15 +65,16 @@
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
     "serve-favicon": "^2.5.0",
+    "snyk": "^1.88.0",
     "stripe": "^5.8.0",
     "stripe-webhook-middleware": "^0.2.0",
     "swig": "^1.4.2",
-    "verror": "^1.10.0",
-    "snyk": "^1.88.0"
+    "verror": "^1.10.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "eslint": "^4.19.1",
