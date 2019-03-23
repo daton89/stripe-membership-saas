@@ -8,3 +8,7 @@ patch:
         patched: '2018-06-26T01:44:41.414Z'
     - nodemailer-mailgunapi-transport > superagent > form-data > mime:
         patched: '2018-06-26T01:44:41.414Z'
+
+  'npm:lodash:20180130':
+    - stripe-webhook-middleware > stripe > lodash:
+        patched: '2018-07-03T01:41:40.190Z'
