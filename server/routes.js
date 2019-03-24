@@ -30,6 +30,8 @@ module.exports = function(app, passport) {
     main.getHome
   );
 
+  app.use("/api/v1/auth", require("./api/auth"));
+
   // sessions
   app.post(
     "/login",
