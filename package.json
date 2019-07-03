@@ -29,7 +29,8 @@
     "fix": "eslint --fix server",
     "test": "ava",
     "snyk-protect": "snyk protect",
-    "prepare": "yarn snyk-protect"
+    "prepare": "yarn snyk-protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "async": "^2.6.0",
@@ -65,7 +66,7 @@
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
     "serve-favicon": "^2.5.0",
-    "snyk": "^1.88.0",
+    "snyk": "^1.189.0",
     "stripe": "^5.8.0",
     "stripe-webhook-middleware": "^0.2.0",
     "swig": "^1.4.2",
