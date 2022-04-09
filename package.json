@@ -52,7 +52,7 @@
     "lodash": "^4.17.11",
     "method-override": "^2.3.10",
     "middleware-responder": "^1.0.0",
-    "moment": "^2.22.0",
+    "moment": "^2.29.2",
     "mongoose": "^5.2.12",
     "mongoose-timestamp": "^0.6.0",
     "morgan": "^1.9.1",
