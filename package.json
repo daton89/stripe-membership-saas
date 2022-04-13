@@ -32,7 +32,7 @@
     "prepare": "yarn snyk-protect"
   },
   "dependencies": {
-    "async": "^2.6.0",
+    "async": "^3.2.2",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.2",
     "composable-middleware": "^0.3.0",
