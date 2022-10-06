@@ -65,7 +65,7 @@
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
     "serve-favicon": "^2.5.0",
-    "snyk": "^1.88.0",
+    "snyk": "^1.996.0",
     "stripe": "^5.8.0",
     "stripe-webhook-middleware": "^0.2.0",
     "swig": "^1.4.2",
