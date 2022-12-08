@@ -42,7 +42,7 @@
     "cors": "^2.8.4",
     "debug": "^3.1.0",
     "dotenv": "^5.0.1",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-flash": "*",
     "express-jwt": "^5.3.1",
     "express-session": "*",
